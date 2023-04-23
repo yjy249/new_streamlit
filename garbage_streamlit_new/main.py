@@ -34,8 +34,8 @@ if __name__ == '__main__':
 #     st.text('This is a platform that can detect trash on highways.')
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('--weights', nargs='+', type=str, default='garbage_streamlit/garm/weight/best.pt', help='model path(s)')
-    parser.add_argument('--source', type=str, default='garbage_streamlit/garm/data/images', help='file/dir/URL/glob, 0 for webcam')
+    parser.add_argument('--weights', nargs='+', type=str, default='garbage_streamlit_new/garm/weight/best.pt', help='model path(s)')
+    parser.add_argument('--source', type=str, default='garbage_streamlit_new/garm/data/images', help='file/dir/URL/glob, 0 for webcam')
     parser.add_argument('--imgsz', '--img', '--img-size', nargs='+', type=int, default=[640], help='inference size h,w')
     parser.add_argument('--conf-thres', type=float, default=0.25, help='confidence threshold')
     parser.add_argument('--iou-thres', type=float, default=0.45, help='NMS IoU threshold')
@@ -73,8 +73,8 @@ if __name__ == '__main__':
             with st.spinner(text='Resource Loading...'):
                 st.sidebar.image(uploaded_file)
                 picture = Image.open(uploaded_file)
-                picture = picture.save(f'garbage_streamlit/garm/data/images/{uploaded_file.name}')
-                opt.source = f'garbage_streamlit/garm/data/images/{uploaded_file.name}'
+                picture = picture.save(f'garbage_streamlit_new/garm/data/images/{uploaded_file.name}')
+                opt.source = f'garbage_streamlit_new/garm/data/images/{uploaded_file.name}'
         else:
             is_valid = False
     else:
@@ -83,9 +83,9 @@ if __name__ == '__main__':
             is_valid = True
             with st.spinner(text='Resource Loading...'):
                 st.sidebar.video(uploaded_file)
-                with open(os.path.join("garbage_streamlit/garm/data", "videos", uploaded_file.name), "wb") as f:
+                with open(os.path.join("garbage_streamlit_new/garm/data", "videos", uploaded_file.name), "wb") as f:
                     f.write(uploaded_file.getbuffer())
-                opt.source = f'garbage_streamlit/garm/data/videos/{uploaded_file.name}'
+                opt.source = f'garbage_streamlit_new/garm/data/videos/{uploaded_file.name}'
         else:
             is_valid = False
 
